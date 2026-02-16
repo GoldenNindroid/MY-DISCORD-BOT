@@ -7,18 +7,19 @@ intents = Intents.default()
 intents.message_content = True
 
 bot = commands.Bot(command_prefix="g!", intents=intents)
+bot.remove_command("help")
 
 @bot.event
 async def on_ready():
     print(f"logged in as {bot.user}")
 
 @bot.command()
-async def ghello(ctx):
+async def hello(ctx):
     await ctx.send(f"wsp @{ctx.author.name}")
 
 # Tells you how fast the bot is responding
 @bot.command()
-async def gping(ctx):
+async def ping(ctx):
     await ctx.send(f"Pong! {round(bot.latency * 1000)}ms")
 
 @bot.command()
@@ -26,11 +27,15 @@ async def goober(ctx):
     await ctx.send("https://cdn.discordapp.com/attachments/1237217863501086750/1472739428165484747/lil_goofy_goober_guy-transparent.png?ex=6993aaf9&is=69925979&hm=52747b372e4c63225fc2c9abc08ca78d095860bcfaea48f8551f87f9890fde02&")
 
 @bot.command()
-async def ghelp(ctx):
-    await ctx.send("The Commands so far are:" 
-    "\n!hello"
-    "\n!goober"
-    "\n!poem")
+async def help(ctx):
+    await ctx.send("The Commands so far are:"
+    "\ng!help" 
+    "\ng!hello"
+    "\ng!goober"
+    "\ng!poem"
+    "\ng!silksong"
+    "\ng!awkward"
+    "\ng!isthebotworking")
 
 # Random poem
 poem_list = ["Roses are red,\n Weapons against me won't prosper,\n With this Sacred Treasure I Summon, \nBig Raga, the Opp Stopper",
@@ -61,7 +66,9 @@ async def silksong(ctx):
 async def awkward(ctx):
     await ctx.send("https://cdn.discordapp.com/attachments/1237217863501086750/1472739102225862942/Screenshot_2026-02-07_204436.png?ex=6993aaac&is=6992592c&hm=624ef3d73cb833bad0ead11004ae4cb3467de307e0dc1ef01e6ff83495fd2c2d&")
 
-
+@bot.command()
+async def isthebotworking(ctx):
+    await ctx.send("yes")
 
 
 
